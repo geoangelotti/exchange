@@ -1,9 +1,5 @@
 import express, { Application } from 'express';
-import {
-	applyMiddleware,
-	applyRoutes,
-	serve,
-} from './utlis';
+import { applyMiddleware, applyRoutes, serve } from './utlis';
 import middleware from './middleware';
 import routes from './routes';
 

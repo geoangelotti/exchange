@@ -1,4 +1,4 @@
-import {app} from './router';
+import { app } from './router';
 
 module.exports = app;
 
