@@ -16,7 +16,7 @@ type Handler = (
 type Route = {
   path: string;
   method: string;
-  handler: Handler;
+  handler: Handler | Handler[];
 };
 
 const catchErrors = (fn: any) => (
