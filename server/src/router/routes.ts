@@ -57,7 +57,7 @@ export default [
               transactions,
             });
             break;
-          case 'empty':
+          case 'no fill':
             res.status(200).send({
               message:
                 'Order not executed. The order recorded to the orderbook.',

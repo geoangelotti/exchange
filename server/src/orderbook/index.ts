@@ -2,7 +2,7 @@ import {
   MinPriorityQueue,
   MaxPriorityQueue,
 } from '@datastructures-js/priority-queue';
-import { ExecutionResponse, LimitExecution, MarketExecution } from './orders';
+import { Execution, LimitExecution, MarketExecution } from './orders';
 import { getLastTransaction } from './transactions';
 
 interface MarketOrder {
@@ -54,7 +54,7 @@ const BuyQueue = new MaxPriorityQueue<LimitOrder>({
   },
 });
 
-const HandleOrder = (order: Order): [boolean, ExecutionResponse] => {
+const HandleOrder = (order: Order): [boolean, Execution] => {
   let Queue:
     | MinPriorityQueue<LimitOrder>
     | MaxPriorityQueue<LimitOrder> = SellQueue;
@@ -89,8 +89,8 @@ const HandleOrder = (order: Order): [boolean, ExecutionResponse] => {
         });
       } else {
         // there is no recorded transaction so there is no price for the asset
-        // complete failure of the order unable to place it to book
-        // some exchanges do not allow Market Orders at the start of trading
+        // complete failure of the order unable to place it into the book
+        // some exchanges do not allow Market Orders at the start of trading for this reason
         return [false, execution];
       }
     }
