@@ -59,6 +59,7 @@
   },
   "dependencies": {
     "@datastructures-js/priority-queue": "^5.2.0",
+    "async-mutex": "^0.3.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
