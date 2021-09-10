@@ -55,7 +55,6 @@ const BuyQueue = new MaxPriorityQueue<LimitOrder>({
 });
 
 const HandleOrder = (order: Order): [boolean, ExecutionResponse] => {
-  console.log(order);
   let Queue:
     | MinPriorityQueue<LimitOrder>
     | MaxPriorityQueue<LimitOrder> = SellQueue;
@@ -76,7 +75,7 @@ const HandleOrder = (order: Order): [boolean, ExecutionResponse] => {
   // The remainder of the Order needs to be added as a Market Order to the Appropriate stash
   if (result !== 'full') {
     if (order.type === 'limit') {
-      Stash.enqueue(<LimitOrder>remainderOrder);
+      Stash.enqueue(remainderOrder as LimitOrder);
     } else {
       // Market Order needs to be transformed to Limit Order
       // the price is the price of the last recorder transaction
