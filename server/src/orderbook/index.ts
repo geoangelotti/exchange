@@ -33,8 +33,8 @@ type Order = MarketOrder | LimitOrder;
 
 const SellQueue = new MinPriorityQueue<LimitOrder>({
   compare: (o1, o2) => {
-    if (o1.price < o2.price) return -1; // do not swap
-    if (o1.price > o2.price) return 1; // swap
+    if (Number(o1.price) < Number(o2.price)) return -1; // do not swap
+    if (Number(o1.price) > Number(o2.price)) return 1; // swap
     return o1.timestamp < o2.timestamp ? -1 : 1;
   },
 });
@@ -48,8 +48,8 @@ const SellQueue = new MinPriorityQueue<LimitOrder>({
 
 const BuyQueue = new MaxPriorityQueue<LimitOrder>({
   compare: (o1, o2) => {
-    if (o1.price > o2.price) return -1; // do not swap
-    if (o1.price < o2.price) return 1; // swap
+    if (Number(o1.price) > Number(o2.price)) return -1; // do not swap
+    if (Number(o1.price) < Number(o2.price)) return 1; // swap
     return o1.timestamp < o2.timestamp ? -1 : 1;
   },
 });
