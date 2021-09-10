@@ -36,7 +36,7 @@ const Orderbook = () => {
 	const [book, setBook] = React.useState({buyQueue: [], sellQueue: []});
 
 	const tick = () => {
-		axios.get('/book').then(res=>res.data).then(res=>res.book).then(res=>setBook(res));
+		axios.get('/book').then(res=>res.data).then(res=>res.book).then(res=>setBook(res)).catch(err=> {console.error(err); setBook({buyQueue: [], sellQueue: []});});
 		setDate(new Date())
 	}
 
