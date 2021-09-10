@@ -82,9 +82,12 @@ export default [
     path: '/book',
     method: 'get',
     handler: async (_req: Request, res: Response) => {
-      res
-        .status(200)
-        .send({ book: { sellQueue: SellQueue.toArray(), buyQueue: BuyQueue.toArray() } });
+      res.status(200).send({
+        book: {
+          sellQueue: SellQueue.toArray(),
+          buyQueue: BuyQueue.toArray(),
+        },
+      });
     },
   },
 ];
