@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { BuyQueue, HandleOrder, SellQueue } from '../orderbook';
+import { TransactionHistory } from '../orderbook/transactions';
 
 export default [
 	{
@@ -90,6 +91,13 @@ export default [
 					buyQueue: BuyQueue.toArray(),
 				},
 			});
+		},
+	},
+	{
+		path: '/transactions',
+		method: 'get',
+		handler: async (_req: Request, res: Response) => {
+			res.status(200).send({transactions: TransactionHistory});
 		},
 	},
 ];
