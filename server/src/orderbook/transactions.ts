@@ -1,3 +1,7 @@
+/**
+ * @type {Transaction}
+ */
+
 interface Transaction {
 	timestamp: Date;
 	seller: string;
@@ -8,13 +12,21 @@ interface Transaction {
 
 const TransactionHistory: Array<Transaction> = [];
 
-const recordTransaction = (transaction: Transaction) =>
+/**
+ * @function recordTransaction
+ * @param {Transaction} transaction 
+ * @returns {number}
+ */
+
+const recordTransaction = (transaction: Transaction): number =>
 	TransactionHistory.push(transaction);
 
-const getLastTransaction = () =>
-	TransactionHistory.length === 0
-		? undefined
-		: TransactionHistory[TransactionHistory.length - 1];
+/**
+ * @function getLastTransaction
+ * @returns {Transaction | undefined}
+ */
+
+const getLastTransaction = (): Transaction | undefined => TransactionHistory.at(-1);
 
 export {
 	Transaction,
