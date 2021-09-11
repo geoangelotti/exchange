@@ -5,3 +5,5 @@
  */
 
 // You can delete this file if you're not using it
+
+import "mdb-react-ui-kit/dist/css/mdb.min.css"
