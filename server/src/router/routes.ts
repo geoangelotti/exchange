@@ -90,7 +90,7 @@ export default [
 		path: '/transactions',
 		method: 'get',
 		handler: async (_req: Request, res: Response) => {
-			res.status(200).send({transactions: TransactionHistory});
+			res.status(200).send({ transactions: TransactionHistory });
 		},
 	},
 ];
