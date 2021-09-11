@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import requests
 import json
 import random
@@ -6,7 +8,7 @@ import time
 
 def send_request():
     body = {
-        "type": random.choice(['limit', 'limit', 'limit', 'limit', 'limit', 'market']),
+        "type": random.choice(['limit', 'limit', 'limit', 'limit', 'market']),
         "side": random.choice(['sell', 'buy']),
         "quantity": random.random() * random.choice([7, 13, 17])
     }
