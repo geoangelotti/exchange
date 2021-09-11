@@ -16,11 +16,11 @@ const OrderTable = ({ rows }) => (
     <Table aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>ID</TableCell>
-          <TableCell align="right">Order</TableCell>
-          <TableCell align="right">Quantity</TableCell>
-          <TableCell align="right">Price</TableCell>
-          <TableCell align="right">Date</TableCell>
+          <TableCell align="center">ID</TableCell>
+          <TableCell align="center">Order</TableCell>
+          <TableCell align="center">Quantity</TableCell>
+          <TableCell align="center">Price</TableCell>
+          <TableCell align="center">Date</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -29,10 +29,10 @@ const OrderTable = ({ rows }) => (
             <TableCell component="th" scope="row">
               {row.uuid}
             </TableCell>
-            <TableCell align="right">{row.side}</TableCell>
-            <TableCell align="right">{row.quantity}</TableCell>
-            <TableCell align="right">{row.price}</TableCell>
-            <TableCell align="right">{row.timestamp.toLocaleString()}</TableCell>
+            <TableCell align="center">{row.side}</TableCell>
+            <TableCell align="center">{row.quantity}</TableCell>
+            <TableCell align="center">{row.price}</TableCell>
+            <TableCell align="center">{row.timestamp.toLocaleString()}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -43,10 +43,6 @@ const OrderTable = ({ rows }) => (
 const Orderbook = ({ emptyBook = { buyQueue: [], sellQueue: [] } }) => {
   const [date, setDate] = React.useState(new Date())
   const [book, setBook] = React.useState(emptyBook)
-
-  React.useEffect(() => {
-    console.log(book)
-  }, [book])
 
   const tick = () => {
     axios
@@ -59,7 +55,7 @@ const Orderbook = ({ emptyBook = { buyQueue: [], sellQueue: [] } }) => {
   }
 
   React.useEffect(() => {
-    const timerID = setTimeout(() => tick(), 1000)
+    const timerID = setTimeout(() => tick(), 250)
     return () => {
       clearTimeout(timerID)
     }
