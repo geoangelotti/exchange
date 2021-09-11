@@ -5,13 +5,6 @@ import { TransactionHistory } from '../orderbook/transactions';
 
 export default [
 	{
-		path: '/ping',
-		method: 'get',
-		handler: async (_req: Request, res: Response) => {
-			res.status(200).send('pong');
-		},
-	},
-	{
 		path: '/order',
 		method: 'post',
 		handler: async (req: Request, res: Response) => {
