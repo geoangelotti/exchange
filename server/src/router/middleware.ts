@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import { vars } from '../env';
 
 /**
- * Express JSON Body Parser
+ * @function jsonBodyParser
  * @param {Application} app
  */
 
@@ -17,7 +17,7 @@ const format =
 		: ':remote-addr - :remote-user ":method :url HTTP/:http-version" :status :res[content-length]';
 
 /**
- * Morgan Logger
+ * @function logger
  * @param {Application} app
  */
 const logger = (app: Application) => {
