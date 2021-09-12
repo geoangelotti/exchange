@@ -2,7 +2,7 @@ import { Application, Request, Response, NextFunction } from 'express';
 import { vars } from '../env';
 
 /**
- * @type {Wrapper}
+ * @typedef {Wrapper}
  */
 
 type Wrapper = (app: Application) => void;
@@ -18,7 +18,7 @@ const applyMiddleware = (app: Application, middlewareWrappers: Wrapper[]) => {
 };
 
 /**
- * @type {Handler}
+ * @typedef {Handler}
  * express handle route function
  */
 
@@ -29,7 +29,7 @@ type Handler = (
 ) => Promise<void>;
 
 /**
- * @type {Route}
+ * @typedef {Route}
  */
 
 type Route = {

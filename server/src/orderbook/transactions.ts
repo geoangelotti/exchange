@@ -1,5 +1,5 @@
 /**
- * @type {Transaction}
+ * @typedef {Transaction}
  */
 
 interface Transaction {
@@ -26,7 +26,7 @@ const recordTransaction = (transaction: Transaction): number =>
  * @returns {Transaction | undefined}
  */
 
-const getLastTransaction = (): Transaction | undefined => TransactionHistory.at(-1);
+const getLastTransaction = (): Transaction | undefined => TransactionHistory.length === 0 ? undefined : TransactionHistory[TransactionHistory.length -1];
 
 export {
 	Transaction,
