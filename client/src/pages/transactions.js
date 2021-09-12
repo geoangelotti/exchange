@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import TransactionHistory from '../components/transaction_history'
+import TransactionHistory from "../components/transaction_history"
 
 const Transactions = () => (
   <Layout>

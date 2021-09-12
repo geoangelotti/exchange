@@ -12,7 +12,6 @@ import {
   FormControl,
   FormControlLabel,
 } from "@material-ui/core"
-import PropTypes from "prop-types"
 
 const OrderTable = ({ rows }) => (
   <TableContainer component={Paper}>
@@ -35,7 +34,9 @@ const OrderTable = ({ rows }) => (
             <TableCell align="center">{row.side}</TableCell>
             <TableCell align="center">{row.quantity}</TableCell>
             <TableCell align="center">{row.price}</TableCell>
-            <TableCell align="center">{row.timestamp.toLocaleString()}</TableCell>
+            <TableCell align="center">
+              {row.timestamp.toLocaleString()}
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -51,12 +52,13 @@ const Orderbook = () => {
   const flip = () => setRefresh(!refresh)
 
   const tick = () => {
-    refresh && axios
-      .get("/api/book")
-      .then(res => res.data)
-      .then(res => res.book)
-      .then(res => setBook(res))
-      .catch(err => console.error(err))
+    refresh &&
+      axios
+        .get("/api/book")
+        .then(res => res.data)
+        .then(res => res.book)
+        .then(res => setBook(res))
+        .catch(err => console.error(err))
     setDate(new Date())
   }
 
@@ -71,11 +73,22 @@ const Orderbook = () => {
     <>
       <h4>Orderbook</h4>
       <FormControl>
-        <FormControlLabel row label='Refresh' control={<Switch checked={refresh} onChange={()=>flip()} color="primary" name='Refresh' />} />
+        <FormControlLabel
+          row
+          label="Refresh"
+          control={
+            <Switch
+              checked={refresh}
+              onChange={() => flip()}
+              color="primary"
+              name="Refresh"
+            />
+          }
+        />
       </FormControl>
       <div className="d-flex justify-content-center">
         <OrderTable rows={book ? book.sellQueue : []} />
-        <div style={{paddingLeft: "1rem"}}/>
+        <div style={{ paddingLeft: "1rem" }} />
         <OrderTable rows={book ? book.buyQueue : []} />
       </div>
     </>
