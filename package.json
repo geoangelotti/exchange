@@ -11,6 +11,7 @@
     "node": ">=10"
   },
   "scripts": {
+    "prodrun": "node dist/index.js",
     "dev": "nodemon dist/index.js -w dist",
     "start": "tsdx watch",
     "build": "tsdx build",
