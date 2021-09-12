@@ -8,6 +8,9 @@ import {
   TableHead,
   TableRow,
   Paper,
+  Switch,
+  FormControl,
+  FormControlLabel,
 } from "@material-ui/core"
 import PropTypes from "prop-types"
 
@@ -40,12 +43,15 @@ const OrderTable = ({ rows }) => (
   </TableContainer>
 )
 
-const Orderbook = ({ emptyBook = { buyQueue: [], sellQueue: [] } }) => {
+const Orderbook = () => {
   const [date, setDate] = React.useState(new Date())
-  const [book, setBook] = React.useState(emptyBook)
+  const [book, setBook] = React.useState({ buyQueue: [], sellQueue: [] })
+  const [refresh, setRefresh] = React.useState(true)
+
+  const flip = () => setRefresh(!refresh)
 
   const tick = () => {
-    axios
+    refresh && axios
       .get("/api/book")
       .then(res => res.data)
       .then(res => res.book)
@@ -64,6 +70,9 @@ const Orderbook = ({ emptyBook = { buyQueue: [], sellQueue: [] } }) => {
   return (
     <>
       <h4>Orderbook</h4>
+      <FormControl>
+        <FormControlLabel row label='Refresh' control={<Switch checked={refresh} onChange={()=>flip()} color="primary" name='Refresh' />} />
+      </FormControl>
       <div className="d-flex justify-content-center">
         <OrderTable rows={book ? book.sellQueue : []} />
         <div style={{paddingLeft: "1rem"}}/>
