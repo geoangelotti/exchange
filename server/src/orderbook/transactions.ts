@@ -14,7 +14,7 @@ const TransactionHistory: Array<Transaction> = [];
 
 /**
  * @function recordTransaction
- * @param {Transaction} transaction 
+ * @param {Transaction} transaction
  * @returns {number}
  */
 
@@ -26,7 +26,10 @@ const recordTransaction = (transaction: Transaction): number =>
  * @returns {Transaction | undefined}
  */
 
-const getLastTransaction = (): Transaction | undefined => TransactionHistory.length === 0 ? undefined : TransactionHistory[TransactionHistory.length -1];
+const getLastTransaction = (): Transaction | undefined =>
+	TransactionHistory.length === 0
+		? undefined
+		: TransactionHistory[TransactionHistory.length - 1];
 
 export {
 	Transaction,
